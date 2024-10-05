@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fontAwesome cdn  -->
+    <script
+      src="https://kit.fontawesome.com/ad7c647c34.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- daisyUi cdn  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#797DFC",
+            },
+          },
+        },
+      };
+    </script>
+
+    <title>Retro forum</title>
+  </head>
+  <body>
+    <header class="w-11/12 m-auto">
+      <!-- nav start  -->
+      <nav class="">
+        <div class="navbar bg-base-100 lg:py-8">
+          <div class="flex-1">
+            <a class="btn btn-ghost text-xs lg:text-4xl uppercase gap-0"
+              ><img class="lg:h-12 h-5" src="./images/logo.png"
+            /></a>
+          </div>
+          <div class="flex-none gap-1 lg:gap-4">
+            <div class="tooltip tooltip-bottom" data-tip="Home">
+              <button
+                class="btn btn-ghost btn-circle bg-[#12132D] bg-opacity-10 lg:btn-lg btn-xs"
+              >
+                <i class="fa fa-home"></i>
+              </button>
+            </div>
+            <div class="tooltip tooltip-bottom" data-tip="Edit">
+              <button
+                class="btn btn-ghost btn-circle bg-[#12132D] bg-opacity-10 lg:btn-lg btn-xs"
+              >
+                <i class="fa-solid fa-pen"></i>
+              </button>
+            </div>
+            <div class="tooltip tooltip-bottom" data-tip="Add">
+              <button
+                class="btn btn-ghost btn-circle bg-[#12132D] bg-opacity-10 lg:btn-lg btn-xs"
+              >
+                <i class="fa-solid fa-user-plus"></i>
+              </button>
+            </div>
+            <div class="tooltip tooltip-bottom" data-tip="Marked">
+              <button
+                class="btn btn-ghost btn-circle bg-[#12132D] bg-opacity-10 lg:btn-lg btn-xs"
+              >
+                <i class="fa-regular fa-flag"></i>
+              </button>
+            </div>
+            <button
+              class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg rounded-full lg:px-20 px-4 bg-primary text-white hover:text-primary hover:bg-gray-200 border-none"
+            >
+              Sign In
+            </button>
+          </div>
+        </div>
+      </nav>
+      <!-- nav end  -->
+      <!-- banner start  -->
+      <section
+        class="p-24 bg-[#12132D] bg-[url('./images/bgbanner.png')] bg-cover flex gap-36"
+      >
+        <div class="">
+          <h1 class="font-black text-6xl text-white mb-5">
+            Welcome to the <br />
+            <span
+              class="bg-gradient-to-r from-primary to-black-100 text-transparent bg-clip-text"
+            >
+              ReTro
+            </span>
+            Forum
+          </h1>
+          <p class="font-normal text-sm text-white mb-8">
+            Share your favorite opinion and win and wp forum coffee mug!
+          </p>
+          <label class="px-1 py-4 rounded-full bg-white">
+            <input
+              id="searchPosts"
+              type="text"
+              class="px-8 mx-2 py-1 rounded-fulli outline-none"
+              placeholder="Search Here Anything..."
+            />
+            <button
+              id="searchPostsBtn"
+              class="w-28 h-11 rounded-full bg-primary font-bold text-sm text-white"
+            >
+              Search
+            </button>
+          </label>
+        </div>
+        <div class="p-12 rounded-[32px] bg-white space-y-3 pb-0">
+          <div
+            class="font-medium text-base text-black flex justify-between gap-5"
+          >
+            <p>Registered Users</p>
+            <p>01</p>
+          </div>
+          <div
+            class="font-medium text-base text-black flex justify-between gap-5"
+          >
+            <p>Forum</p>
+            <p>05</p>
+          </div>
+          <div
+            class="font-medium text-base text-black flex justify-between gap-5"
+          >
+            <p>Topics</p>
+            <p>01</p>
+          </div>
+          <div
+            class="font-medium text-base text-black flex justify-between gap-5"
+          >
+            <p>Replies</p>
+            <p>03</p>
+          </div>
+        </div>
+      </section>
+      <!-- banner end  -->
+    </header>
+    <main class="w-11/12 m-auto">
+      <!-- Let’s Discuss start -->
+      <section class="mt-24">
+        <h2 class="font-black text-4xl text-center mb-6">Let’s Discuss</h2>
+        <p class="text-[18px] text-center mb-12">
+          Yes, you can run unit tests and view the results directly within the
+          <br />
+          app. The integrated testing features allow for a streamlined .
+        </p>
+        <div class="grid grid-cols-3 gap-6">
+          <div class="col-span-2">
+            <div id="all-posts" class="space-y-6"></div>
+          </div>
+          <div class="col-span-1 p-6 rounded-3xl bg-[#12132D0D]">
+            <div class="flex justify-between mb-4">
+              <h2 class="font-bold text-xl">Title</h2>
+              <div class="flex items-center gap-2">
+                <i
+                  class="fa-solid fa-check-double text-green-500"
+                  aria-hidden="true"
+                ></i>
+                <p>Mark as read (<span id="count">0</span>)</p>
+              </div>
+            </div>
+            <div id="history"></div>
+          </div>
+        </div>
+      </section>
+      <!-- Let’s Discuss end -->
+      <!-- Join Our Forum start  -->
+      <section
+        class="my-24 flex justify-center items-center rounded-3xl bg-[#12132D] text-white"
+      >
+        <div>
+          <h2 class="font-black text-[40px] mb-4">Join Our Forum</h2>
+          <p class="font-medium text-xl text-[#FFFFFFCC] mb-8">
+            Share your favorite opinion and win and wp forum coffee mug! Yes,
+            you can <br />
+            run unit tests and view the results directly within the app.
+          </p>
+          <button
+            class="btn rounded-3xl bg-[#797DFC] font-bold text-xl text-white outline-none"
+          >
+            Registered Now
+          </button>
+        </div>
+        <div class="mt-14 ml-4">
+          <img src="./images/joinforum.png" alt="joinforum" />
+        </div>
+      </section>
+      <!-- Join Our Forum end  -->
+      <!-- Latest Posts start  -->
+      <section class="mb-24">
+        <h2 class="font-black text-[40px] mb-6 text-center">Latest Posts</h2>
+        <p class="text-lg text-[#12132D99] mb-12 text-center">
+          Yes, you can run unit tests and view the results directly within the
+          app. The integrated testing features allow for a streamlined .
+        </p>
+        <div id="card" class="grid grid-cols-3 gap-6"></div>
+      </section>
+      <!-- Latest Posts end  -->
+    </main>
+    <footer
+      class="py-24 px-32 text-center bg-gradient-to-b from-[rgb(233,233,236)] to-[rgb(251,251,252)]"
+    >
+      <div class="mb-4">
+        <img class="m-auto" src="./images/logo.png" alt="logo" />
+      </div>
+      <p class="text-[#12132DB3] mb-8">
+        Contrary to popular belief, Lorem Ipsum is not simply random text. It
+        has roots in a piece of classical Latin literature from 45 BC
+      </p>
+      <div class="flex justify-center items-center gap-8 pb-12 border-b-2">
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-github"></i>
+      </div>
+      <p class="mt-12 text-[#12132D80]">2017, All Rights Reserved.</p>
+    </footer>
+
+    <script src="./index.js"></script>
+  </body>
+</html>
